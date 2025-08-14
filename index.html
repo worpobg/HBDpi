@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎂 สุขสันต์วันเกิด 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>สุขสันต์วันเกิดนะคั้บคุณเป้ย 💖</h1>
+  <p class="description">
+    ขอให้วันเกิดของคุณเป้ยปีนี้มีความสุขมากๆเบยนะครับ ❄️<br />
+    เต็มไปด้วยความสุข ความทรงจำดี ๆ ตลอดไปเบยน้าาา 💝
+  </p>
+
+  <!-- SLIDES -->
+<div class="slideshow-container">
+  <div class="mySlides active">
+    <img src="scr/1748884601654[1].jpg" />
+  </div>
+  <div class="mySlides next">
+    <img src="scr/1748884613625[1].jpg" />
+  </div>
+  <div class="mySlides">
+    <img src="scr/1748884630507[1].jpg" />
+  </div>
+</div>
+
+    <!-- arrows -->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+  </div>
+
+  <button class="btn" onclick="playMusic()">ฟังเพลงวันเกิด 🎶</button>
+  <audio id="bgm" src="song/Best Part - Daniel Caesar (feat. H.E.R.) _ Lyrics & แปล.mp3"></audio>
+
+  <div class="password">
+    <label for="password">ใส่รหัสผ่านเพื่อดูของขวัญ 🎁:</label>
+  <style>
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .circle-input {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      font-size: 24px;
+      text-align: center;
+      margin: 0 6px;
+      transition: all 0.2s ease;
+      background: white;
+      outline: none;
+    }
+
+    .circle-input:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    }
+
+    #container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      color: red;
+      margin-top: 15px;
+    }
+  </style>
+  <h2>กรอกรหัสผ่าน (6 ตัว)</h2>
+
+  <div id="container">
+    <input type="text" maxlength="1" class="circle-input" id="code1" oninput="moveNext(this, 'code2')">
+    <input type="text" maxlength="1" class="circle-input" id="code2" oninput="moveNext(this, 'code3')" onkeydown="moveBack(event, this, 'code1')">
+    <input type="text" maxlength="1" class="circle-input" id="code3" oninput="moveNext(this, 'code4')" onkeydown="moveBack(event, this, 'code2')">
+    <input type="text" maxlength="1" class="circle-input" id="code4" oninput="moveNext(this, 'code5')" onkeydown="moveBack(event, this, 'code3')">
+    <input type="text" maxlength="1" class="circle-input" id="code5" oninput="moveNext(this, 'code6')" onkeydown="moveBack(event, this, 'code4')">
+    <input type="text" maxlength="1" class="circle-input" id="code6" onkeydown="moveBack(event, this, 'code5')">
+  </div>
+
+  <button onclick="checkPassword()">เข้าสู่ระบบ</button>
+  <p id="result"></p>
+
+  <script>
+    const CORRECT_PASSWORD = "KUNGFU";
+
+    function moveNext(current, nextId) {
+      if (current.value.length === 1) {
+        const next = document.getElementById(nextId);
+        if (next) next.focus();
+      }
+    }
+
+    function moveBack(event, current, prevId) {
+      if (event.key === "Backspace" && current.value === "") {
+        const prev = document.getElementById(prevId);
+        if (prev) prev.focus();
+      }
+    }
+
+    function checkPassword() {
+      let password = "";
+      for (let i = 1; i <= 6; i++) {
+        password += document.getElementById("code" + i).value;
+      }
+
+      const result = document.getElementById("result");
+
+      if (password === CORRECT_PASSWORD) {
+        window.location.href = "surprise.html";
+      } else {
+        result.textContent = "❌ รหัสผ่านไม่ถูกต้อง!";
+      }
+    }
+
+    window.onload = () => {
+      document.getElementById("code1").focus({ preventScroll: true });
+    };
+
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 100);
+  </script>
+    
+  </div>
+  <footer>&copy; ขอให้คุณเป้ยมีความสุขที่สุดในโลก 💌</footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img" src="" />
+  </div>
+
+  <script src="Node.js"></script>
+
+  <script>
+  const numFlakes = 50;
+
+  for (let i = 0; i < numFlakes; i++) {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.textContent = "💧"; // หรือใช้ "*" แทนถ้าต้องการสไตล์อื่น
+    snowflake.style.left = `${Math.random() * 100}%`;
+    snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+    snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+    snowflake.style.opacity = Math.random();
+    snowflake.style.animationDelay = `${Math.random() * 10}s`;
+    document.body.appendChild(snowflake);
+  }
+</script>
+</body>
+</html>
